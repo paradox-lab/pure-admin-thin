@@ -4,6 +4,7 @@ import { useRouter } from "vue-router";
 import { initRouter } from "/@/router/utils";
 import { storageSession } from "/@/utils/storage";
 import { addClass, removeClass } from "/@/utils/operate";
+// import {getLogin} from "/@/api/user";
 import bg from "/@/assets/login/bg.png";
 import avatar from "/@/assets/login/avatar.svg";
 import illustration0 from "/@/assets/login/illustration0.svg";
@@ -39,9 +40,15 @@ const currentWeek = computed(() => {
 });
 
 let user = ref("admin");
-let pwd = ref("123456");
+let pwd = ref("password123");
+
+// let loginForm = {
+//   user: user,
+//   pwd: pwd
+// }
 
 const onLogin = (): void => {
+  // getLogin(loginForm)
   storageSession.setItem("info", {
     username: "admin",
     accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
