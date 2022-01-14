@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 import { initRouter } from "/@/router/utils";
 import { storageSession } from "/@/utils/storage";
 import { addClass, removeClass } from "/@/utils/operate";
-// import {getLogin} from "/@/api/user";
+import { getLogin } from "/@/api/user";
 import bg from "/@/assets/login/bg.png";
 import avatar from "/@/assets/login/avatar.svg";
 import illustration0 from "/@/assets/login/illustration0.svg";
@@ -42,19 +42,26 @@ const currentWeek = computed(() => {
 let user = ref("admin");
 let pwd = ref("password123");
 
-// let loginForm = {
-//   user: user,
-//   pwd: pwd
-// }
-
 const onLogin = (): void => {
-  // getLogin(loginForm)
-  storageSession.setItem("info", {
-    username: "admin",
-    accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
-  });
-  initRouter("admin").then(() => {});
-  router.push("/");
+  let loginForm = {
+    username: user.value,
+    password: pwd.value
+  };
+  getLogin(loginForm)
+    .then(data => {
+      storageSession.setItem("info", {
+        username: loginForm["username"],
+        accessToken: data["access"],
+        refresh: data["refresh"]
+      });
+      initRouter(loginForm["username"]).then(() => {});
+      router.push("/");
+    })
+    .catch(err => {
+      // TODO UI优化
+      console.log(err);
+      alert("请输入正确的用户名和密码");
+    });
 };
 
 function onUserFocus() {
