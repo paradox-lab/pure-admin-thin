@@ -1,16 +1,4 @@
 {
-  /** 你需要安装这些插件，以便带来更好的提示体验
-   * ESLint
-   * Prettier - Code formatter
-   * stylelint
-   * vscode-icons
-   * i18n Ally
-   * Iconify IntelliSense
-   * WindiCSS IntelliSense
-   * TypeScript Vue Plugin (Volar)
-   * Vue Language Features (Volar)
-   */
-  "terminal.integrated.rendererType": "dom",
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -28,26 +16,20 @@
   "editor.suggestSelection": "first",
   "editor.acceptSuggestionOnCommitCharacter": false,
   "css.lint.propertyIgnoredDueToDisplay": "ignore",
-  // Prevent inline styles from being automatically formatted to all lowercase
   "editor.quickSuggestions": {
     "other": true,
     "comments": true,
     "strings": true
   },
-  // Automatically fix some syntax errors of ts
-  "tslint.autoFixOnSave": true,
   "files.associations": {
-    // Specifies the location of snippets in the suggestion widget
     "editor.snippetSuggestions": "top"
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.userWords": ["sourcemap", "vite"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "volar.tsPlugin": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "i18n-ally.localesPaths": ["src/plugins/i18n"],
   "i18n-ally.keystyle": "nested",
